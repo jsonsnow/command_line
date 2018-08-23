@@ -90,6 +90,69 @@ eg3：对一个目录及其子目录所有文件添加权限
 chmod -R u+x test4
 ```
 
+____
+
+
+### 2018-08-23
+#### SSH相关命令
+SSH是一种网络协议，用于计算机之间的加密登录。
+ssh只是一种协议，存在多种实现。
+
+##### 基本的用法
+SSH主要用于远程登录。
+
+```
+ssh user@host
+```
+
+该命令为以用户名user，登录远程主机host.
+如果本地用户名与远程用户名一致，登录时可以省略用户名
+
+```
+ssh host
+```
+
+ssh的默认端口是22,登录请求会送进远程主机的22端口。使用p参数，可以修改这个端口。
+
+```
+ssh -p 2222 user@host
+```
+
+```
+$ ssh user@host
+
+　　The authenticity of host 'host (12.18.429.21)' can't be established.
+
+　　RSA key fingerprint is 98:2e:d7:e0:de:9f:ac:67:28:c2:42:2d:37:16:58:4d.
+
+　　Are you sure you want to continue connecting (yes/no)?
+```
+这个是ssh在第一次登录的时候防止中间人攻击的一种措施，远程主机必须在自己的网站上贴出公匙指纹，以便用户自行核对。
+
+当远程主机的公匙被接受后，它就会被保存在文件$HOME/.ssh/know_host之中。下次再链接这台主机，就会跳过警告
+
+每个SSH用户都有自己的known_hosts文件,此外系统也有一个这样的文件，通常是/etc/ssh/ssh_know_host,保存一些对所有用户都可以信赖的远程主机的公匙。
+
+#### 公匙登录
+使用密码登录，每次都必须输入密码，非常麻烦，SSH提供了公匙登录，可以省去输入密码的步骤。
+
+公匙登录：用户将自己的公匙存储到远程主机上，登录的时候，远程主机向用户发送一段随记字符串，用户用自己的私匙加密后，再发回来。远程主机用事先存储的公匙进行解密，如果成功，就证明用户是可信的，直接运行登录shell,不要要求密码。
+
+生成钥匙对
+
+```
+ssh-keygen
+```
+
+```
+ssh-copy-id user@host
+```
+
+```
+ssh-add privateKey
+ssh-add -K privateKey 添加到钥匙串中
+```
+
 
 
 

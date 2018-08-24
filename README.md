@@ -153,6 +153,19 @@ ssh-add privateKey
 ssh-add -K privateKey 添加到钥匙串中
 ```
 
+___
+
+#### mv指令
+
+```
+mv指令重命名效果
+mv a b
+
+mv移动 :将/a目录移动到/b目录下，并重命名为c
+mv /a /b/c
+```
+
+
 
 
 

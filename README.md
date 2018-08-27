@@ -209,6 +209,26 @@ source ~/.profile
 unset PATH
 ```
 
+#### brew的使用
+homebrew,是mac下类似apt-get的软件管理工具
+
+安装brew
+
+```
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+安装软件
+
+```
+brew cask install xxx（用来安装一些带界面的应用软件）
+eg: brew cask install chrome
+
+brew install xxx
+```
+卸载软件
+brew uninstall xxx
+
 
 
 

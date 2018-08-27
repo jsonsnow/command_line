@@ -165,6 +165,51 @@ mv移动 :将/a目录移动到/b目录下，并重命名为c
 mv /a /b/c
 ```
 
+#### 环境变量
+当要求系统运行一个程序而没有告诉程序的完整路径，系统除了在当前目录下寻找程序外，还应到path中的指定路径去找。
+
+##### 查看环境变量
+echo $PATH
+export $PATH
+
+```
+chendeiMac:jsonsnow.github.io chenliang$ echo $PATH
+/Users/chenliang/.rvm/gems/ruby-2.5.1/bin:/Users/chenliang/.rvm/gems/ruby-2.5.1@global/bin:/Users/chenliang/.rvm/rubies/ruby-2.5.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/chenliang/.rvm/bi
+
+```
+
+##### 环境变量添加
+**临时添加，关闭终端之后就失效**
+
+```
+export PATH=/usr/local/webserver/mysql/bin:$PATH
+```
+
+**永久有效，对所有用户生效 -修改/etc/profile文件
+
+sudo vim /etc/profile
+
+export PATH="/usr/local/webserver/mysql/bin:$PATH"
+
+执行立即生效语句
+```
+source /etc/profile
+```
+
+**对当前用户生效 - 修改\
+
+```
+vim ~/.profile
+source ~/.profile
+```
+
+环境变量的删除
+
+```
+unset PATH
+```
+
+
 
 
 

@@ -230,6 +230,13 @@ brew install xxx
 brew uninstall xxx
 
 
+#### Mac 显示任何来源选项命令
+
+```
+sudo spctl --master-disable
+```
+
+
 
 
 

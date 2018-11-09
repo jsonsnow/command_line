@@ -257,6 +257,78 @@ DevToolsSecurity -enable
 **最后解决了，是把在钥匙串中对应在系统的证书移动到登录中去**
 
 
+#### git命令使用
+
+git 分为工作区和暂存区，工作区就是项目目录区，通过git add 可以把工作区的文件提交到暂存区。
+
+git commit 把暂存区的内容提交到分支，也就是没有经过git add 命令的修改不会提交到分支
+
+##### git 版本回退命令
+
+我的理解是git是一个链，每个节点记录了一次提交，具体命令如下
+
+```
+///回退到上一次提交
+git reset --hard HEAD^
+
+///回退到具体版本
+git reset --hard <commit id>
+
+///查看提交记录
+git log
+```
+
+##### 查看本次修改和工作区的区别
+
+```
+git diff HEAD -- readme.txt
+```
+
+##### 撤销修改
+
+```
+git checkout -- readme.txt
+```
+该命令把文件在工作区的修改全部撤销，具体回到那里看提交情况
+
+* 修改后未add，则会回到和版本库一模一样的状态
+* 有进行add，怎回到add这个时候的状态
+
+```
+git reset HEAD <file> 
+```
+
+命令可以把暂存区的修改撤销，重新放回工作区,HEAD表示的最新的一次commit
+在通过git checkout -- <file>，可以把工作区的修改也丢弃
+
+git checkout其实是用版本库的版本替换工作区的版本，所以当你删除一个文件的时候，git checkout 可以还原，因此只要文件提交到了版本库，那么永远不用担心误删，但是只会恢复文件到最新的版本，后续的修改会丢失。
+
+##### 添加远程仓库
+```
+/// name -> origin url->远程仓库的地址
+git remote add <name> <url>
+```
+
+##### 子模块
+
+创建子模块
+git submodule add <url> <path>
+.gitmodules 文件有子模块的配置信息
+
+```
+git clone <url>
+git submodule init
+git submodule update
+``
+主工作区只是保留了一个子模块的引用，不会管理子模块的版本。子模块的更改需要到其工作区做提交，主工作区的依赖则转向新的提交，如果这时候子模块的提交不推送到远端，其他工程师在git submodule的时候则会报错
+
+```
+git submodule update
+unable to checkout 'xxxxx'
+```
+
+
+
 
 
 

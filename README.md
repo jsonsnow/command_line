@@ -319,18 +319,55 @@ git submodule add <url> <path>
 git clone <url>
 git submodule init
 git submodule update
-``
+```
 主工作区只是保留了一个子模块的引用，不会管理子模块的版本。子模块的更改需要到其工作区做提交，主工作区的依赖则转向新的提交，如果这时候子模块的提交不推送到远端，其他工程师在git submodule的时候则会报错
+
 
 ```
 git submodule update
 unable to checkout 'xxxxx'
+
 ```
 
+#### Linux命令
+安装软件
+```
+sudo apt install <pagename>
+```
+sudo 用来给后面的操作加权限的
 
+.deb文件来安装软件
+```
+sudo dpkg -i <package.deb>
+```
+```
+dpkg -i package.deb 安装包
+dpkg -r package 删除包
+dpkg -P package删除包(包括配置文件)
+dpkg -L package列出与该包关联的文件
+dpkg -I package显示该包的版本
+dpgk -unpack package.deb解开deb包的内容
+dpkg -S keyworad搜索所属的包内容
 
+```
 
+apt 命令安装的软件源一般在 ubuntu或者Canonical，如果未收录到该源里面的库则无法安装，这时候我们可以通过ppa的方式来安装
 
+PPA是个人软件包归档Personal Package Archive的缩写，
+PPA运行开发者创建自己的APT仓库，用户向sources.list中增加该仓库，就可以通过apt形式安装了
 
+用法
+```
+sudo add-apt-repository ppa:numix/ppa
+sudo apt-get udpate
+sudo apt-getinstall <packagename>
+```
+eg: sublime Text
+
+``
+sudo add-apt-repository ppa:webupd8team/sublime-text-3
+sudo apt update
+sudo apt install sublime-text-installer
+```
 
 

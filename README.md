@@ -327,14 +327,50 @@ git submodule update
 git submodule update
 unable to checkout 'xxxxx'
 
-```
 
+```
 每次git pull 的时候，如果submodlue有新的提交，需要进行git submodule update操作
 
 
+#### Linux命令
+安装软件
+```
+sudo apt install <pagename>
+```
+sudo 用来给后面的操作加权限的
 
+.deb文件来安装软件
+```
+sudo dpkg -i <package.deb>
 
+```
+dpkg -i package.deb 安装包
+dpkg -r package 删除包
+dpkg -P package删除包(包括配置文件)
+dpkg -L package列出与该包关联的文件
+dpkg -I package显示该包的版本
+dpgk -unpack package.deb解开deb包的内容
+dpkg -S keyworad搜索所属的包内容
 
+```
 
+apt 命令安装的软件源一般在 ubuntu或者Canonical，如果未收录到该源里面的库则无法安装，这时候我们可以通过ppa的方式来安装
+
+PPA是个人软件包归档Personal Package Archive的缩写，
+PPA运行开发者创建自己的APT仓库，用户向sources.list中增加该仓库，就可以通过apt形式安装了
+
+用法
+```
+sudo add-apt-repository ppa:numix/ppa
+sudo apt-get udpate
+sudo apt-getinstall <packagename>
+```
+eg: sublime Text
+
+``
+sudo add-apt-repository ppa:webupd8team/sublime-text-3
+sudo apt update
+sudo apt install sublime-text-installer
+```
 
 

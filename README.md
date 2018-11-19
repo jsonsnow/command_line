@@ -319,13 +319,17 @@ git submodule add <url> <path>
 git clone <url>
 git submodule init
 git submodule update
-``
-主工作区只是保留了一个子模块的引用，不会管理子模块的版本。子模块的更改需要到其工作区做提交，主工作区的依赖则转向新的提交，如果这时候子模块的提交不推送到远端，其他工程师在git submodule的时候则会报错
+```
+主工作区只是保留了一个子模块的引用，不会管理子模块的版本。子模块的更改需要到其工作区做提交，主工作区的依赖则转向新的提交，如果这时候子模块的提交不推送到远端，其他工程师在git submodule update的时候则会报错
+
 
 ```
 git submodule update
 unable to checkout 'xxxxx'
+
 ```
+
+每次git pull 的时候，如果submodlue有新的提交，需要进行git submodule update操作
 
 
 

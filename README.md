@@ -376,3 +376,24 @@ sudo apt install sublime-text-installer
 ```
 
 
+#### cp命令的使用
+单个文件的拷贝
+
+```
+cp source_file target_file
+```
+
+目录的拷贝
+
+```
+cp -r source_direct target_direct
+```
+
+#### shell脚本存储路径空格处理
+对存在空格的变量x的引用需要用双引号括起来 eg:
+
+```
+dir = "te st"
+mkdir = "$dir"
+```
+
